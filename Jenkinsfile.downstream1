@@ -1,6 +1,12 @@
 pipeline {
   agent any
 
+  stages {
+    stage('Pull') {
+      steps {
+		sh 'git pull'
+      }
+    }
   stage('Count') {
     steps {
       sh 'echo Downstream -1'

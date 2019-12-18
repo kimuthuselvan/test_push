@@ -5,6 +5,7 @@ pipeline {
     stage('Checkout') {
       steps {
         sh 'git checkout master'
+		sh 'git pull'
       }
     }
     stage('Count') {
