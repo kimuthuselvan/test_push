@@ -10,7 +10,8 @@ pipeline {
     stage('Count') {
       steps {
         sh 'echo ${BUILD_NUMBER}'
-	    sh 'echo ${BUILD_NUMBER} > mytext.txt'
+	sh 'echo Jenkinsfile'
+	sh 'echo ${BUILD_NUMBER} > mytext.txt'
       }
     }
 	stage('Commit') {
@@ -19,7 +20,11 @@ pipeline {
 	  sh 'ls -lh'
 	  sh 'git commit -m "Jenkins commit after build" mytext.txt'
 	  sh 'git push --all --verbose'
-	  }
+	}
+	stage ('Jenkinsfile.downstream1')
+		setps {
+			build 'Pipeline_A'
+		}
     }
   }
 }
