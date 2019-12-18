@@ -22,7 +22,7 @@ pipeline {
 	  sh 'git push --all --verbose'
 	}
 	}
-	stage ('Jenkinsfile.downstream1') {
+	stage ('Downstream1') {
 		setps {
 			build 'Pipeline_A'
 		}
