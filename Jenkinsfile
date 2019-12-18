@@ -21,7 +21,8 @@ pipeline {
 	  sh 'git commit -m "Jenkins commit after build" mytext.txt'
 	  sh 'git push --all --verbose'
 	}
-	stage ('Jenkinsfile.downstream1')
+	}
+	stage ('Jenkinsfile.downstream1') {
 		setps {
 			build 'Pipeline_A'
 		}
