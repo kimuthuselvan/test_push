@@ -23,7 +23,7 @@ pipeline {
 	}
 	}
 	stage ('Downstream1') {
-		setps {
+		steps {
 			build 'Pipeline_A'
 		}
     }
