@@ -1,0 +1,34 @@
+pipeline {
+  agent any
+  String sytem_Build =upStream
+  stages {
+    stage('Checkout') {
+      steps {
+        echo "Checking out the file from Master..."
+        sh 'git checkout master'
+		
+      }
+    }
+    stage('Build') {
+      steps {
+        echo "Compiling upStream Job...."
+		sytem_Build +=${BUILD_NUMBER}
+        sh 'echo ${sytem_Build}'> mytext1.txt'
+      }
+    }
+    stage ('Downstream1') {
+      steps {
+        build job: 'DownStreamJob1'
+      }
+    }
+     stage('Commit') {
+      steps {
+        sh 'cat mytext1.txt'
+        sh 'ls -lh'
+        sh 'git commit -m "Jenkins commit after build" mytext1.txt'
+        sh 'git push --all --verbose'
+      }
+    }
+    
+  }
+}
