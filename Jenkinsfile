@@ -25,7 +25,7 @@ pipeline {
     }
     stage ('Downstream1') {
       steps {
-        build 'Pipeline_A'
+        build job: 'Pipeline_A'
       }
     }
   }
